@@ -10,13 +10,13 @@
   ],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": ["error", {
-      "printWidth": 120,
-      "tabWidth": 2,
-      "singleQuote": true,
-      "trailingComma": "all",
-      "proseWrap": "always"
-    }],
+    // "prettier/prettier": ["error", {
+    //   "printWidth": 120,
+    //   "tabWidth": 2,
+    //   "singleQuote": true,
+    //   "trailingComma": "all",
+    //   "proseWrap": "always"
+    // }],
     "no-console": "error",
 
     "react/jsx-props-no-spreading": "error",
