@@ -13,12 +13,10 @@ import {
 } from '@chakra-ui/react';
 import { Link as RouteLink } from 'react-router-dom';
 import { AppRoute } from '../../routing/app-route.enum';
-import { Navbar } from '../../ui/navbar/navbar';
 
 export const Register = () => {
   return (
     <Box width="full">
-      <Navbar />
       <Flex justify="center" align="center" h="100vh">
         <Box
           borderWidth={1}

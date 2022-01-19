@@ -38,7 +38,6 @@ export const Login = ({ onSubmit }: LoginProps) => {
 
   return (
     <Box width="full">
-      <Navbar />
       <Flex justify="center" align="center" h="calc(100vh - 72px)">
         <Box
           borderWidth={1}

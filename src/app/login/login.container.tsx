@@ -4,6 +4,7 @@ import { FieldValues } from 'react-hook-form';
 import { loginAction } from '../../api/actions/auth/auth.actions';
 import { SET_AUTHORIZED } from '../../context/auth/auth.reducer';
 import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
+import { NavbarLayout } from '../../theme/navbar.layout';
 import { Login } from './login';
 
 export const LoginContainer = () => {
@@ -30,5 +31,9 @@ export const LoginContainer = () => {
     [mutate, dispatch],
   );
 
-  return <Login onSubmit={onSubmit} />;
+  return (
+    <NavbarLayout>
+      <Login onSubmit={onSubmit} />
+    </NavbarLayout>
+  );
 };
