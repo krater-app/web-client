@@ -8,15 +8,18 @@ import '@fontsource/raleway/400.css';
 import '@fontsource/open-sans/700.css';
 import { ApiClientContext } from './context/api-client/api-client.context';
 import { AppRoutes } from './routing/app-routes';
+import { AuthProvider } from './providers/auth-provider/auth.provider';
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider resetCSS theme={theme}>
       <ColorModeScript initialColorMode="system" />
       <ApiClientContext>
-        <BrowserRouter>
-          <AppRoutes />
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
+        </AuthProvider>
       </ApiClientContext>
     </ChakraProvider>
   </React.StrictMode>,
