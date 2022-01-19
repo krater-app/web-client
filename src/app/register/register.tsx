@@ -7,8 +7,12 @@ import {
   FormLabel,
   Heading,
   Input,
+  Link,
+  Text,
   VStack,
 } from '@chakra-ui/react';
+import { Link as RouteLink } from 'react-router-dom';
+import { AppRoute } from '../../routing/app-route.enum';
 import { Navbar } from '../../ui/navbar/navbar';
 
 export const Register = () => {
@@ -40,19 +44,23 @@ export const Register = () => {
             <FormControl mt={6}>
               <FormLabel htmlFor="nickname">Nickname</FormLabel>
               <Input id="nickname" placeholder="Provider your nickname" />
+              <FormHelperText>
+                Nickname will be visible to other users. Also you will be able
+                to log in with username.
+              </FormHelperText>
             </FormControl>
             <FormControl mt={6}>
               <FormLabel htmlFor="password">Password</FormLabel>
               <Input
-                id="nickname"
+                id="password"
                 placeholder="Provider your password"
                 type="password"
               />
             </FormControl>
             <FormControl mt={6}>
-              <FormLabel htmlFor="password">Retype password</FormLabel>
+              <FormLabel htmlFor="retype-password">Retype password</FormLabel>
               <Input
-                id="nickname"
+                id="retype-password"
                 placeholder="Retype your password"
                 type="password"
               />
@@ -61,6 +69,12 @@ export const Register = () => {
               Register
             </Button>
           </form>
+          <Text mt={4}>
+            Already registered?
+            <Link ml={2} as={RouteLink} to={AppRoute.Login}>
+              Log In Here
+            </Link>
+          </Text>
         </Box>
       </Flex>
     </Box>

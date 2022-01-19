@@ -6,11 +6,36 @@ import {
   FormLabel,
   Heading,
   Input,
+  Link,
+  Text,
   VStack,
 } from '@chakra-ui/react';
+import { useCallback, useState } from 'react';
+import { FieldValues, useForm } from 'react-hook-form';
+import { Link as RouteLink } from 'react-router-dom';
+import { FormError } from '../../ui/form-error/form-error';
 import { Navbar } from '../../ui/navbar/navbar';
+import { AppRoute } from '../../routing/app-route.enum';
+import { LoginProps } from './login.types';
 
-export const Login = () => {
+export const Login = ({ onSubmit }: LoginProps) => {
+  const { register, handleSubmit } = useForm();
+
+  const [isError, setIsError] = useState(false);
+
+  const handleSubmitCallback = useCallback(
+    async (body: FieldValues) => {
+      const valid = await onSubmit(body);
+
+      if (!valid) {
+        setIsError(true);
+      } else {
+        setIsError(false);
+      }
+    },
+    [onSubmit],
+  );
+
   return (
     <Box width="full">
       <Navbar />
@@ -30,10 +55,23 @@ export const Login = () => {
               Login
             </Heading>
           </VStack>
-          <form>
-            <FormControl>
+
+          <form onSubmit={handleSubmit(handleSubmitCallback)}>
+            {isError && (
+              <FormError
+                title="Unauthorized!"
+                description="Provided nickname or password is invalid."
+              />
+            )}
+            <FormControl mt={6}>
               <FormLabel htmlFor="nickname">Nickname</FormLabel>
-              <Input id="nickname" placeholder="Provide your nickname" />
+              <Input
+                id="nickname"
+                placeholder="Provide your nickname"
+                {...register('nickname', {
+                  required: true,
+                })}
+              />
             </FormControl>
             <FormControl mt={6}>
               <FormLabel htmlFor="password">Password</FormLabel>
@@ -41,12 +79,21 @@ export const Login = () => {
                 id="password"
                 type="password"
                 placeholder="Provide your password"
+                {...register('password', {
+                  required: true,
+                })}
               />
             </FormControl>
             <Button width="full" mt={6} type="submit" colorScheme="orange">
               Sign In
             </Button>
           </form>
+          <Text mt={4}>
+            Don't have an account?{' '}
+            <Link ml={2} as={RouteLink} to={AppRoute.Register}>
+              Register Here
+            </Link>
+          </Text>
         </Box>
       </Flex>
     </Box>

@@ -4,7 +4,6 @@ import {
   Flex,
   Heading,
   IconButton,
-  Link,
   Menu,
   MenuButton,
   MenuItem,
@@ -12,6 +11,8 @@ import {
   Stack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../routing/app-route.enum';
 import { LinkItem } from '../link-item/link-item';
 import { ThemeToggleButton } from '../theme-toggle-button/theme-toggle-button';
 
@@ -54,8 +55,8 @@ export const Navbar = () => {
             md: 'auto',
           }}
         >
-          <LinkItem href="#">About</LinkItem>
-          <LinkItem href="#">Portfolio</LinkItem>
+          <LinkItem href={AppRoute.Login}>Login</LinkItem>
+          <LinkItem href={AppRoute.Register}>Register</LinkItem>
           <ThemeToggleButton />
         </Stack>
         <Box align="right">
@@ -74,10 +75,12 @@ export const Navbar = () => {
                 ml={3}
               />
               <MenuList>
-                <MenuItem as={Link} href="#">
-                  About
+                <MenuItem as={Link} to={AppRoute.Login}>
+                  Login
                 </MenuItem>
-                <MenuItem as={Link}>Portfolio</MenuItem>
+                <MenuItem as={Link} to={AppRoute.Register}>
+                  Register
+                </MenuItem>
               </MenuList>
             </Menu>
           </Box>

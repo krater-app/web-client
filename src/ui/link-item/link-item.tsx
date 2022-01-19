@@ -1,5 +1,6 @@
 import { Link, useColorModeValue } from '@chakra-ui/react';
 import { ReactNode } from 'react';
+import { Link as RouteLink } from 'react-router-dom';
 
 interface Props {
   children: ReactNode;
@@ -9,7 +10,8 @@ interface Props {
 export const LinkItem = ({ children, href }: Props) => {
   return (
     <Link
-      href={href}
+      as={RouteLink}
+      to={href}
       p={2}
       color={useColorModeValue('gray200', 'whiteAlpha.900')}
     >
