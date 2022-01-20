@@ -4,6 +4,7 @@ import { FieldValues } from 'react-hook-form';
 import { loginAction } from '../../api/actions/auth/auth.actions';
 import {
   SET_AUTHORIZED,
+  SET_TOKENS,
   SET_UNAUTHORIZED,
   START_AUTHORIZING,
 } from '../../context/auth/auth.reducer';
@@ -28,6 +29,11 @@ export const LoginContainer = () => {
 
         dispatch({
           type: SET_AUTHORIZED,
+        });
+
+        dispatch({
+          type: SET_TOKENS,
+          accessToken,
         });
 
         return true;

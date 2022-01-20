@@ -1,4 +1,5 @@
-import { ReactNode, useReducer } from 'react';
+import { ReactNode, useEffect, useReducer } from 'react';
+import { authStorage } from '../../context/auth-storage/auth-storage';
 import {
   AuthContext,
   initialAuthContext,
@@ -10,7 +11,15 @@ interface Props {
 }
 
 export const AuthProvider = ({ children }: Props) => {
-  const [state, dispatch] = useReducer(authReducer, initialAuthContext);
+  const [state, dispatch] = useReducer(authReducer, {
+    ...initialAuthContext,
+    accessToken: authStorage.getAccessToken(),
+    isAuthorized: authStorage.getAccessToken() !== null,
+  });
+
+  useEffect(() => {
+    authStorage.setAccessToken(state.accessToken);
+  }, [state.accessToken]);
 
   return (
     <AuthContext.Provider

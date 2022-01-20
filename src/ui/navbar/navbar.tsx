@@ -22,11 +22,15 @@ export const Navbar = () => {
       width="full"
       as="nav"
       position="fixed"
-      bg={useColorModeValue('#ffffff40', '#20202380')}
+      bg={useColorModeValue('white', 'gray.900')}
       zIndex={1}
     >
       <Flex
-        maxW="container.xl"
+        maxW={{
+          lg: 'container.lg',
+          md: 'container.md',
+          sm: 'container.sm',
+        }}
         p={4}
         mx="auto"
         alignItems="center"
@@ -34,7 +38,10 @@ export const Navbar = () => {
       >
         <Heading
           as="h1"
-          fontSize={26}
+          fontSize={{
+            md: 26,
+            sm: 24,
+          }}
           letterSpacing="tight"
           flex={1}
           fontWeight="medium"

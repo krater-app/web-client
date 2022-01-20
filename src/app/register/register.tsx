@@ -45,7 +45,13 @@ export const Register = ({ onSubmit, errorMessage }: Props) => {
 
   return (
     <Box width="full">
-      <Flex justify="center" align="center" h="100vh">
+      <Flex
+        justify="center"
+        align={{
+          md: 'center',
+          sm: 'flex-start',
+        }}
+      >
         <Box
           borderWidth={1}
           borderRadius={8}
@@ -53,7 +59,10 @@ export const Register = ({ onSubmit, errorMessage }: Props) => {
           p={10}
           w={{
             md: 'container.md',
-            sm: 'container.lg.sm',
+            sm: 'container.sm',
+          }}
+          minW={{
+            sm: 'container.sm',
           }}
         >
           <VStack>

@@ -2,11 +2,13 @@ import { AuthContextState } from './auth.context';
 
 export type AuthAction = {
   type: string;
+  accessToken?: string;
 };
 
 export const SET_AUTHORIZED = 'auth/set-authorized';
 export const START_AUTHORIZING = 'auth/start-authorizing';
 export const SET_UNAUTHORIZED = 'auth/set-unauthorized';
+export const SET_TOKENS = 'auth/set-tokens';
 
 export const authReducer = (
   state: AuthContextState,
@@ -31,6 +33,13 @@ export const authReducer = (
         ...state,
         isAuthorizing: false,
         isAuthorized: false,
+        accessToken: null,
+      };
+
+    case SET_TOKENS:
+      return {
+        ...state,
+        accessToken: action.accessToken ?? null,
       };
 
     default:

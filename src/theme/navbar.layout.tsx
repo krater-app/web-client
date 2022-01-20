@@ -1,4 +1,4 @@
-import { Container, VStack } from '@chakra-ui/react';
+import { Box, Container, useColorModeValue, VStack } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { Navbar } from '../ui/navbar/navbar';
 
@@ -7,10 +7,16 @@ interface Props {
 }
 
 export const NavbarLayout = ({ children }: Props) => (
-  <Container as="main" width="max">
-    <VStack width="full">
+  <Container
+    as="main"
+    bg={useColorModeValue('gray.50', 'gray.800')}
+    minH="100vh"
+    minW="full"
+  >
+    <VStack>
       <Navbar />
-      {children}
+      <Box height="72px" />
+      <Container py={10}>{children}</Container>
     </VStack>
   </Container>
 );
