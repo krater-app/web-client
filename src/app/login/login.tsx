@@ -14,11 +14,14 @@ import { useCallback, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { Link as RouteLink } from 'react-router-dom';
 import { FormError } from '../../ui/form-error/form-error';
-import { Navbar } from '../../ui/navbar/navbar';
 import { AppRoute } from '../../routing/app-route.enum';
+import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
 import { LoginProps } from './login.types';
 
 export const Login = ({ onSubmit }: LoginProps) => {
+  const {
+    state: { isAuthorizing },
+  } = useAuthState();
   const { register, handleSubmit } = useForm();
 
   const [isError, setIsError] = useState(false);
@@ -83,7 +86,14 @@ export const Login = ({ onSubmit }: LoginProps) => {
                 })}
               />
             </FormControl>
-            <Button width="full" mt={6} type="submit" colorScheme="orange">
+            <Button
+              width="full"
+              mt={6}
+              type="submit"
+              colorScheme="orange"
+              isLoading={isAuthorizing}
+              loadingText="Logging in..."
+            >
               Sign In
             </Button>
           </form>

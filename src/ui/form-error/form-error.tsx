@@ -3,6 +3,7 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
+  Flex,
 } from '@chakra-ui/react';
 
 interface Props {
@@ -13,7 +14,9 @@ interface Props {
 export const FormError = ({ description, title }: Props) => (
   <Alert status="error">
     <AlertIcon />
-    <AlertTitle mr={2}>{title}</AlertTitle>
-    <AlertDescription>{description}</AlertDescription>
+    <Flex direction="column">
+      <AlertTitle mr={2}>{title}</AlertTitle>
+      <AlertDescription>{description}</AlertDescription>
+    </Flex>
   </Alert>
 );

@@ -1,5 +1,4 @@
-import { ComponentProps, FC, ReactChild, ReactNode } from 'react';
-import { Navigate, Route, RouteProps, useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { useAuthState } from '../hooks/use-auth-state/use-auth-state.hook';
 import { AppRoute } from './app-route.enum';
 

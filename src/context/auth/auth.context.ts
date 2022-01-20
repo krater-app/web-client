@@ -3,10 +3,12 @@ import { AuthAction } from './auth.reducer';
 
 export interface AuthContextState {
   isAuthorized: boolean;
+  isAuthorizing: boolean;
 }
 
 export const initialAuthContext: AuthContextState = {
   isAuthorized: false,
+  isAuthorizing: false,
 };
 
 export interface AuthContextStateApi {

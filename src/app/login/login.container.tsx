@@ -2,7 +2,11 @@ import { useCallback } from 'react';
 import { useMutation } from 'react-fetching-library';
 import { FieldValues } from 'react-hook-form';
 import { loginAction } from '../../api/actions/auth/auth.actions';
-import { SET_AUTHORIZED } from '../../context/auth/auth.reducer';
+import {
+  SET_AUTHORIZED,
+  SET_UNAUTHORIZED,
+  START_AUTHORIZING,
+} from '../../context/auth/auth.reducer';
 import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
 import { NavbarLayout } from '../../theme/navbar.layout';
 import { Login } from './login';
@@ -14,6 +18,9 @@ export const LoginContainer = () => {
 
   const onSubmit = useCallback(
     async (body: FieldValues): Promise<boolean> => {
+      dispatch({
+        type: START_AUTHORIZING,
+      });
       const { payload, error: submitError } = await mutate(body);
 
       if (!submitError && payload) {
@@ -25,6 +32,10 @@ export const LoginContainer = () => {
 
         return true;
       }
+
+      dispatch({
+        type: SET_UNAUTHORIZED,
+      });
 
       return false;
     },

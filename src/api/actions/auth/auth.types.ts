@@ -6,3 +6,13 @@ export interface LoginPayload {
 export interface LoginResponse {
   accessToken: string;
 }
+
+export interface RegisterPayload {
+  email?: string;
+  nickname?: string;
+  password?: string;
+}
+
+export interface RegisterErrorResponse {
+  error: string;
+}
