@@ -14,6 +14,7 @@ import {
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../routing/app-route.enum';
 import { LinkItem } from '../link-item/link-item';
+import { Logo } from '../logo/logo';
 import { ThemeToggleButton } from '../theme-toggle-button/theme-toggle-button';
 
 export const Navbar = () => {
@@ -36,17 +37,8 @@ export const Navbar = () => {
         alignItems="center"
         justify="space-between"
       >
-        <Heading
-          as="h1"
-          fontSize={{
-            md: 26,
-            sm: 24,
-          }}
-          letterSpacing="tight"
-          flex={1}
-          fontWeight="medium"
-        >
-          krater
+        <Heading as="h1" letterSpacing="tight" flex={1}>
+          <Logo />
         </Heading>
         <Stack
           direction={{

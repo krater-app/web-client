@@ -12,7 +12,7 @@ import { AuthProvider } from './providers/auth-provider/auth.provider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider resetCSS theme={theme}>
+    <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode="system" />
       <ApiClientContext>
         <AuthProvider>
