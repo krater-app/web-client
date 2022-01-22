@@ -25,7 +25,8 @@ interface Props {
 }
 
 export const Register = ({ onSubmit, errorMessage }: Props) => {
-  const { handleSubmit, register, formState, watch } = useForm();
+  const { handleSubmit, register, formState, watch, reset } = useForm();
+
   const [isError, setIsError] = useState(false);
 
   const [isRegistering, setIsRegistering] = useState(false);
@@ -38,9 +39,18 @@ export const Register = ({ onSubmit, errorMessage }: Props) => {
 
       setIsRegistering(false);
 
-      setIsError(isValid);
+      if (isValid) {
+        reset({
+          email: '',
+          nickname: '',
+          password: '',
+          retypePassword: '',
+        });
+      } else {
+        setIsError(true);
+      }
     },
-    [onSubmit],
+    [onSubmit, reset],
   );
 
   return (
@@ -70,7 +80,7 @@ export const Register = ({ onSubmit, errorMessage }: Props) => {
               Register
             </Heading>
           </VStack>
-          <form onSubmit={handleSubmit(handleSubmitCallback)}>
+          <form onSubmit={handleSubmit(handleSubmitCallback)} onReset={reset}>
             {isError && (
               <FormError
                 title="Registration error"

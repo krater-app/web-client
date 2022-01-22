@@ -17,7 +17,7 @@ export const RegisterContainer = () => {
         setErrorMessage(payload.error);
       }
 
-      return submitError;
+      return !submitError;
     },
     [mutate],
   );

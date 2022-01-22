@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,6 +10,8 @@ import '@fontsource/open-sans/700.css';
 import { ApiClientContext } from './context/api-client/api-client.context';
 import { AppRoutes } from './routing/app-routes';
 import { AuthProvider } from './providers/auth-provider/auth.provider';
+
+window.Buffer = window.Buffer || Buffer;
 
 ReactDOM.render(
   <React.StrictMode>

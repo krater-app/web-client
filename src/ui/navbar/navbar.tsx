@@ -12,12 +12,17 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
 import { AppRoute } from '../../routing/app-route.enum';
 import { LinkItem } from '../link-item/link-item';
 import { Logo } from '../logo/logo';
 import { ThemeToggleButton } from '../theme-toggle-button/theme-toggle-button';
 
 export const Navbar = () => {
+  const {
+    state: { isAuthorized },
+  } = useAuthState();
+
   return (
     <Box
       width="full"
@@ -54,8 +59,13 @@ export const Navbar = () => {
             md: 'auto',
           }}
         >
-          <LinkItem href={AppRoute.Login}>Login</LinkItem>
-          <LinkItem href={AppRoute.Register}>Register</LinkItem>
+          {!isAuthorized && <LinkItem href={AppRoute.Login}>Login</LinkItem>}
+          {!isAuthorized && (
+            <LinkItem href={AppRoute.Register}>Register</LinkItem>
+          )}
+          {isAuthorized && (
+            <LinkItem href={AppRoute.CreatePost}>Create new post</LinkItem>
+          )}
           <ThemeToggleButton />
         </Stack>
         <Box align="right">
@@ -74,12 +84,21 @@ export const Navbar = () => {
                 ml={3}
               />
               <MenuList>
-                <MenuItem as={Link} to={AppRoute.Login}>
-                  Login
-                </MenuItem>
-                <MenuItem as={Link} to={AppRoute.Register}>
-                  Register
-                </MenuItem>
+                {!isAuthorized && (
+                  <MenuItem as={Link} to={AppRoute.Login}>
+                    Login
+                  </MenuItem>
+                )}
+                {!isAuthorized && (
+                  <MenuItem as={Link} to={AppRoute.Register}>
+                    Register
+                  </MenuItem>
+                )}
+                {isAuthorized && (
+                  <MenuItem as={Link} to={AppRoute.CreatePost}>
+                    Create new post
+                  </MenuItem>
+                )}
               </MenuList>
             </Menu>
           </Box>

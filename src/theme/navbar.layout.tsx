@@ -16,7 +16,9 @@ export const NavbarLayout = ({ children }: Props) => (
     <VStack>
       <Navbar />
       <Box height="72px" />
-      <Container py={10}>{children}</Container>
+      <Container my={10} p={0}>
+        {children}
+      </Container>
     </VStack>
   </Container>
 );
