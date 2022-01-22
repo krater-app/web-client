@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { CreatePostContainer } from '../app/create-post/create-post.container';
 import { HomeContainer } from '../app/home/home.container';
 import { LoginContainer } from '../app/login/login.container';
 import { RegisterContainer } from '../app/register/register.container';
@@ -13,6 +14,14 @@ export const AppRoutes = () => (
       element={
         <RequireAuth>
           <HomeContainer />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path={AppRoute.CreatePost}
+      element={
+        <RequireAuth>
+          <CreatePostContainer />
         </RequireAuth>
       }
     />
