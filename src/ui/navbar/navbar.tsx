@@ -1,4 +1,9 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
+import {
+  AddIcon,
+  ArrowForwardIcon,
+  HamburgerIcon,
+  UnlockIcon,
+} from '@chakra-ui/icons';
 import {
   Box,
   Flex,
@@ -85,17 +90,29 @@ export const Navbar = () => {
               />
               <MenuList>
                 {!isAuthorized && (
-                  <MenuItem as={Link} to={AppRoute.Login}>
+                  <MenuItem
+                    as={Link}
+                    to={AppRoute.Login}
+                    icon={<ArrowForwardIcon />}
+                  >
                     Login
                   </MenuItem>
                 )}
                 {!isAuthorized && (
-                  <MenuItem as={Link} to={AppRoute.Register}>
+                  <MenuItem
+                    as={Link}
+                    to={AppRoute.Register}
+                    icon={<UnlockIcon />}
+                  >
                     Register
                   </MenuItem>
                 )}
                 {isAuthorized && (
-                  <MenuItem as={Link} to={AppRoute.CreatePost}>
+                  <MenuItem
+                    as={Link}
+                    to={AppRoute.CreatePost}
+                    icon={<AddIcon />}
+                  >
                     Create new post
                   </MenuItem>
                 )}

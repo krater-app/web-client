@@ -1,8 +1,7 @@
-import { Box, Container, Heading, Spinner } from '@chakra-ui/react';
+import { Container, Spinner } from '@chakra-ui/react';
 import { useQuery } from 'react-fetching-library';
 import { fetchNewsFeed } from '../../api/actions/news-feed/news-feed.actions';
 import { NavbarLayout } from '../../theme/navbar.layout';
-import { SelectPostType } from './select-post-type/select-post-type';
 
 export const HomeContainer = () => {
   const { loading, payload } = useQuery(fetchNewsFeed({}));

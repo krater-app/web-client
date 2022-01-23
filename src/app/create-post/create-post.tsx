@@ -10,7 +10,7 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { CreatableSelect } from 'chakra-react-select';
-import { SelectPostType } from '../home/select-post-type/select-post-type';
+import { SelectPostType } from './select-post-type/select-post-type';
 
 export const CreatePost = () => {
   return (
@@ -22,7 +22,7 @@ export const CreatePost = () => {
           fontWeight="semibold"
           letterSpacing="tight"
         >
-          Create new post
+          Create new post 🚀
         </Heading>
         <SelectPostType />
         <Divider />

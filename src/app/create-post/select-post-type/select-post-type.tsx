@@ -3,7 +3,10 @@ import { Flex, useRadioGroup } from '@chakra-ui/react';
 import { RadioCard } from '../../../ui/radio-card/radio-card';
 
 const StyledFlex = styled(Flex)`
-  & > label:nth-child(2n) {
+  justify-content: center;
+  align-items: center;
+
+  & > label:nth-of-type(2n) {
     margin: 0 10px;
   }
 `;
