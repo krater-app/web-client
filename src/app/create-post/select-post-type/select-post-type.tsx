@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { ChangeEvent } from 'react';
 import { Flex, useRadioGroup } from '@chakra-ui/react';
 import { RadioCard } from '../../../ui/radio-card/radio-card';
 
@@ -11,24 +12,51 @@ const StyledFlex = styled(Flex)`
   }
 `;
 
-export const SelectPostType = () => {
-  const options = ['Text Post', 'Link Post', 'Image Post'];
+export type PostType = 'text-post' | 'link-post' | 'image-post';
+
+interface Props {
+  defaultValue?: PostType;
+  onChange: (value: PostType) => void;
+}
+
+export const SelectPostType = ({
+  defaultValue = 'text-post',
+  onChange,
+}: Props) => {
+  const options = [
+    {
+      label: 'Text Post',
+      value: 'text-post',
+    },
+    {
+      label: 'Link Post',
+      value: 'link-post',
+    },
+    {
+      label: 'Image Post',
+      value: 'image-post',
+    },
+  ];
 
   const { getRadioProps, getRootProps } = useRadioGroup({
+    defaultValue,
     name: 'type',
-    defaultValue: options[0],
   });
 
   const group = getRootProps();
 
+  const handleRadioValueChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value as PostType);
+  };
+
   return (
-    <StyledFlex {...group} width="full">
-      {options.map((option) => {
-        const radio = getRadioProps({ value: option });
+    <StyledFlex {...group} width="full" onChange={handleRadioValueChange}>
+      {options.map(({ label, value }) => {
+        const radio = getRadioProps({ value });
 
         return (
-          <RadioCard key={option} {...radio}>
-            {option}
+          <RadioCard key={value} {...radio}>
+            {label}
           </RadioCard>
         );
       })}

@@ -1,18 +1,13 @@
-import {
-  Button,
-  Container,
-  Divider,
-  FormControl,
-  FormLabel,
-  Heading,
-  Input,
-  Textarea,
-  VStack,
-} from '@chakra-ui/react';
-import { CreatableSelect } from 'chakra-react-select';
-import { SelectPostType } from './select-post-type/select-post-type';
+import { Container, Divider, Heading, VStack } from '@chakra-ui/react';
+import { useState } from 'react';
+import { PostType, SelectPostType } from './select-post-type/select-post-type';
+import { TextPostForm } from './text-post-form/text-post-form';
 
 export const CreatePost = () => {
+  const [selectedPostType, setSelectedPostType] = useState<PostType>(
+    'text-post',
+  );
+
   return (
     <Container px={0}>
       <VStack spacing={5} align="stretch">
@@ -24,49 +19,12 @@ export const CreatePost = () => {
         >
           Create new post 🚀
         </Heading>
-        <SelectPostType />
+        <SelectPostType
+          defaultValue={selectedPostType}
+          onChange={setSelectedPostType}
+        />
         <Divider />
-        <form>
-          <FormControl>
-            <FormLabel>Tags</FormLabel>
-            <CreatableSelect
-              id="tags"
-              isMulti
-              hasStickyGroupHeaders
-              tagVariant="solid"
-              backspaceRemovesValue
-              isSearchable
-              size="md"
-              options={[
-                {
-                  label: 'test',
-                  value: 'test',
-                },
-                {
-                  label: 'test1',
-                  value: 'test1',
-                },
-              ]}
-            />
-          </FormControl>
-          <FormControl mt={4}>
-            <FormLabel htmlFor="title">Title</FormLabel>
-            <Input
-              id="title"
-              placeholder="Some tl;dr title of your content 😅"
-            />
-          </FormControl>
-          <FormControl mt={4}>
-            <FormLabel htmlFor="content">Content</FormLabel>
-            <Textarea
-              id="content"
-              placeholder="Provide some content for your text post..."
-            />
-          </FormControl>
-          <Button width="full" mt={8} colorScheme="orange">
-            Create
-          </Button>
-        </form>
+        {selectedPostType === 'text-post' && <TextPostForm />}
       </VStack>
     </Container>
   );
