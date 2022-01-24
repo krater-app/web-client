@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { CreatePostContainer } from '../app/create-post/create-post.container';
 import { HomeContainer } from '../app/home/home.container';
 import { LoginContainer } from '../app/login/login.container';
+import { LogoutContainer } from '../app/logout/logout.container';
 import { RegisterContainer } from '../app/register/register.container';
 import { AppRoute } from './app-route.enum';
 import { GuestOnly } from './guest-only';
@@ -41,6 +42,7 @@ export const AppRoutes = () => (
         </GuestOnly>
       }
     />
+    <Route path={AppRoute.Logout} element={<LogoutContainer />} />
     <Route path="*" element={<Navigate to={AppRoute.Login} />} />
   </Routes>
 );

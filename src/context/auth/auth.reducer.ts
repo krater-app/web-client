@@ -9,6 +9,7 @@ export const SET_AUTHORIZED = 'auth/set-authorized';
 export const START_AUTHORIZING = 'auth/start-authorizing';
 export const SET_UNAUTHORIZED = 'auth/set-unauthorized';
 export const SET_TOKENS = 'auth/set-tokens';
+export const LOGOUT = 'auth/logout';
 
 export const authReducer = (
   state: AuthContextState,
@@ -41,6 +42,15 @@ export const authReducer = (
         ...state,
         accessToken: action.accessToken ?? null,
       };
+
+    case LOGOUT: {
+      return {
+        ...state,
+        accessToken: null,
+        isAuthorized: false,
+        isAuthorizing: false,
+      };
+    }
 
     default:
       return state;

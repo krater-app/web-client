@@ -7,7 +7,6 @@ import {
   Textarea,
   VStack,
 } from '@chakra-ui/react';
-import { TagsInput } from '../tags-input/tags-input';
 
 export const LinkPostForm = () => {
   return (
@@ -21,7 +20,6 @@ export const LinkPostForm = () => {
           />
           <FormHelperText>Title is not required for link post</FormHelperText>
         </FormControl>
-        <TagsInput />
         <FormControl>
           <FormLabel htmlFor="link">Link</FormLabel>
           <Input id="link" placeholder="Provide link you want to share 🔗" />

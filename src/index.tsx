@@ -17,13 +17,13 @@ ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode="system" />
-      <ApiClientContext>
-        <AuthProvider>
+      <AuthProvider>
+        <ApiClientContext>
           <BrowserRouter>
             <AppRoutes />
           </BrowserRouter>
-        </AuthProvider>
-      </ApiClientContext>
+        </ApiClientContext>
+      </AuthProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root'),

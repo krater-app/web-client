@@ -16,7 +16,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 import { FiFile } from 'react-icons/fi';
 import { FileUpload } from '../../../ui/file-upload/file-upload';
-import { TagsInput } from '../tags-input/tags-input';
 
 export const ImagePostForm = () => {
   const [imagePreviewUrl, setImagePreviewUrl] = useState<null | string>(null);
@@ -57,7 +56,6 @@ export const ImagePostForm = () => {
           />
           <FormHelperText>Title is not required for text post</FormHelperText>
         </FormControl>
-        <TagsInput />
         <FormControl>
           <Flex align="center" justify="space-between" my={1}>
             <FormLabel htmlFor="file">File</FormLabel>

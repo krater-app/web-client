@@ -22,3 +22,14 @@ export interface FetchNewsFeedResponse {
   items: FetchNewsFeedItem[];
   total: number;
 }
+
+export interface FetchTagsPayload {
+  page?: number;
+  limit?: number;
+  searchString?: string;
+}
+
+export interface FetchTagsResponse {
+  tags: string[];
+  total: number;
+}

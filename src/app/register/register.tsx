@@ -90,7 +90,6 @@ export const Register = ({ onSubmit, errorMessage }: Props) => {
             <FormControl isInvalid={formState.errors.email}>
               <FormLabel htmlFor="email">Email</FormLabel>
               <Input
-                // type="email"
                 id="email"
                 placeholder="Provide your email"
                 {...register('email', {

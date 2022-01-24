@@ -16,6 +16,8 @@ import {
   Stack,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { FiLogOut } from 'react-icons/fi';
+import { BsFileEarmarkPost } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
 import { AppRoute } from '../../routing/app-route.enum';
@@ -71,6 +73,10 @@ export const Navbar = () => {
           {isAuthorized && (
             <LinkItem href={AppRoute.CreatePost}>Create new post</LinkItem>
           )}
+          {isAuthorized && (
+            <LinkItem href={AppRoute.CreatePost}>Your posts</LinkItem>
+          )}
+          {isAuthorized && <LinkItem href={AppRoute.Logout}>Logout</LinkItem>}
           <ThemeToggleButton />
         </Stack>
         <Box align="right">
@@ -114,6 +120,20 @@ export const Navbar = () => {
                     icon={<AddIcon />}
                   >
                     Create new post
+                  </MenuItem>
+                )}
+                {isAuthorized && (
+                  <MenuItem
+                    as={Link}
+                    to={AppRoute.CreatePost}
+                    icon={<BsFileEarmarkPost />}
+                  >
+                    Your posts
+                  </MenuItem>
+                )}
+                {isAuthorized && (
+                  <MenuItem as={Link} to={AppRoute.Logout} icon={<FiLogOut />}>
+                    Logout
                   </MenuItem>
                 )}
               </MenuList>
