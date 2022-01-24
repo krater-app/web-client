@@ -1,5 +1,6 @@
 import { Container, Divider, Heading, VStack } from '@chakra-ui/react';
 import { useState } from 'react';
+import { ImagePostForm } from './image-post-form/image-post-form';
 import { LinkPostForm } from './link-post-form/link-post-form';
 import { PostType, SelectPostType } from './select-post-type/select-post-type';
 import { TextPostForm } from './text-post-form/text-post-form';
@@ -27,6 +28,7 @@ export const CreatePost = () => {
         <Divider />
         {selectedPostType === 'text-post' && <TextPostForm />}
         {selectedPostType === 'link-post' && <LinkPostForm />}
+        {selectedPostType === 'image-post' && <ImagePostForm />}
       </VStack>
     </Container>
   );
