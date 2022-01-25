@@ -19,7 +19,8 @@ export const AuthProvider = ({ children }: Props) => {
 
   useEffect(() => {
     authStorage.setAccessToken(state.accessToken);
-  }, [state.accessToken]);
+    authStorage.setRefreshToken(state.refreshToken);
+  }, [state.accessToken, state.refreshToken]);
 
   return (
     <AuthContext.Provider

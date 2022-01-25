@@ -1,5 +1,6 @@
 import { ReactNode, useMemo } from 'react';
 import { createClient, ClientContextProvider } from 'react-fetching-library';
+import { refreshTokenInterceptor } from '../../api/interceptors/refresh-token.interceptor';
 import { requestAuthInterceptor } from '../../api/interceptors/request-auth.interceptor';
 import { requestHostInterceptor } from '../../api/interceptors/request-host.interceptor';
 import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
@@ -10,7 +11,8 @@ interface Props {
 
 export const ApiClientContext = ({ children }: Props) => {
   const {
-    state: { accessToken },
+    state: { accessToken, refreshToken },
+    dispatch,
   } = useAuthState();
 
   const baseUrl = 'http://localhost:4000';
@@ -21,9 +23,11 @@ export const ApiClientContext = ({ children }: Props) => {
         requestHostInterceptor(baseUrl),
         requestAuthInterceptor(accessToken),
       ],
-      responseInterceptors: [],
+      responseInterceptors: [
+        refreshTokenInterceptor(refreshToken ?? '', dispatch),
+      ],
     });
-  }, [baseUrl, accessToken]);
+  }, [baseUrl, accessToken, refreshToken, dispatch]);
 
   return (
     <ClientContextProvider client={client}>{children}</ClientContextProvider>

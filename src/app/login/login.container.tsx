@@ -25,7 +25,7 @@ export const LoginContainer = () => {
       const { payload, error: submitError } = await mutate(body);
 
       if (!submitError && payload) {
-        const { accessToken } = payload;
+        const { accessToken, refreshToken } = payload;
 
         dispatch({
           type: SET_AUTHORIZED,
@@ -34,6 +34,7 @@ export const LoginContainer = () => {
         dispatch({
           type: SET_TOKENS,
           accessToken,
+          refreshToken,
         });
 
         return true;

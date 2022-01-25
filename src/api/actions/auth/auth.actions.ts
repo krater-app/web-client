@@ -2,6 +2,8 @@ import { Action } from '../../types';
 import {
   LoginPayload,
   LoginResponse,
+  RefreshTokenPayload,
+  RefreshTokenResponse,
   RegisterErrorResponse,
   RegisterPayload,
 } from './auth.types';
@@ -17,5 +19,13 @@ export const registerAction = (
 ): Action<RegisterErrorResponse> => ({
   method: 'POST',
   endpoint: '/account-registration',
+  body: payload,
+});
+
+export const refreshTokenAction = (
+  payload: RefreshTokenPayload,
+): Action<RefreshTokenResponse> => ({
+  method: 'POST',
+  endpoint: '/account/refresh-token',
   body: payload,
 });

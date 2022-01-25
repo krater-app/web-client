@@ -5,12 +5,14 @@ export interface AuthContextState {
   isAuthorized: boolean;
   isAuthorizing: boolean;
   accessToken: string | null;
+  refreshToken: string | null;
 }
 
 export const initialAuthContext: AuthContextState = {
   isAuthorized: false,
   isAuthorizing: false,
   accessToken: null,
+  refreshToken: null,
 };
 
 export interface AuthContextStateApi {

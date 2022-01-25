@@ -3,6 +3,7 @@ import { AuthContextState } from './auth.context';
 export type AuthAction = {
   type: string;
   accessToken?: string;
+  refreshToken?: string;
 };
 
 export const SET_AUTHORIZED = 'auth/set-authorized';
@@ -41,6 +42,7 @@ export const authReducer = (
       return {
         ...state,
         accessToken: action.accessToken ?? null,
+        refreshToken: action.refreshToken ?? null,
       };
 
     case LOGOUT: {
@@ -49,6 +51,7 @@ export const authReducer = (
         accessToken: null,
         isAuthorized: false,
         isAuthorizing: false,
+        refreshToken: null,
       };
     }
 

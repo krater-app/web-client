@@ -5,6 +5,7 @@ export interface LoginPayload {
 
 export interface LoginResponse {
   accessToken: string;
+  refreshToken: string;
 }
 
 export interface RegisterPayload {
@@ -15,4 +16,12 @@ export interface RegisterPayload {
 
 export interface RegisterErrorResponse {
   error: string;
+}
+
+export interface RefreshTokenPayload {
+  refreshToken?: string;
+}
+
+export interface RefreshTokenResponse {
+  accessToken: string;
 }

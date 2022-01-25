@@ -10,6 +10,7 @@ export const LogoutContainer = () => {
 
   useEffect(() => {
     authStorage.setAccessToken(null);
+    authStorage.setRefreshToken(null);
 
     dispatch({
       type: LOGOUT,
