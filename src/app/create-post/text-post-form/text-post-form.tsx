@@ -1,6 +1,7 @@
 import {
   Button,
   Checkbox,
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -9,9 +10,12 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { CreatableSelect, MultiValue } from 'chakra-react-select';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
+import { PostStatus } from '../../../api/actions/news-feed/news-feed.types';
 import { useTags } from '../../../hooks/use-tags/use-tags.hook';
+import { AppRoute } from '../../../routing/app-route.enum';
 
 interface TagValue {
   label: string;
@@ -19,12 +23,14 @@ interface TagValue {
 }
 
 interface Props {
-  onSubmit: (payload: FieldValues) => Promise<boolean>;
+  onSubmit: (payload: FieldValues) => Promise<{ status: boolean; id: string }>;
   title?: string | null;
   tags?: string[];
   content?: string;
   isNsfw?: boolean;
   mode?: 'create' | 'update';
+  status?: PostStatus;
+  onPublish?: () => Promise<boolean>;
 }
 
 export const TextPostForm = ({
@@ -34,7 +40,12 @@ export const TextPostForm = ({
   tags: defaultTags = [],
   isNsfw = false,
   mode = 'create',
+  status = 'Draft',
+  onPublish,
 }: Props) => {
+  const [shouldRedirect, setShouldRedirect] = useState<boolean>(false);
+  const [postId, setPostId] = useState<string | null>(null);
+
   const { register, handleSubmit, formState, setValue, reset, watch } = useForm(
     {
       defaultValues: {
@@ -52,7 +63,7 @@ export const TextPostForm = ({
 
   const handleSubmitCallback = useCallback(
     async (body: FieldValues) => {
-      const isValid = await onSubmit(body);
+      const { status: isValid, id } = await onSubmit(body);
 
       if (isValid) {
         reset({
@@ -61,6 +72,9 @@ export const TextPostForm = ({
           tags: [],
           isNsfw: false,
         });
+
+        setPostId(id);
+        setShouldRedirect(true);
       }
     },
     [onSubmit, reset],
@@ -77,7 +91,9 @@ export const TextPostForm = ({
     setSearchString(value);
   };
 
-  return (
+  return shouldRedirect ? (
+    <Navigate to={`${AppRoute.EditPost}/${postId}`} />
+  ) : (
     <form onSubmit={handleSubmit(handleSubmitCallback)}>
       <VStack spacing={5}>
         <FormControl isInvalid={Boolean(formState.errors.title)}>
@@ -131,9 +147,23 @@ export const TextPostForm = ({
             Is NSFW?
           </Checkbox>
         </FormControl>
-        <Button width="full" colorScheme="orange" type="submit">
-          {mode === 'create' ? 'Create' : 'Update'}
-        </Button>
+        <Flex justifyContent="space-between" width="full">
+          <Button flex={1} colorScheme="orange" type="submit">
+            {mode === 'create' ? 'Create' : 'Update'}
+          </Button>
+          {mode === 'update' && (
+            <Button
+              flex={1}
+              ml={5}
+              colorScheme="green"
+              type="button"
+              isDisabled={status !== 'Draft'}
+              onClick={onPublish}
+            >
+              Publish
+            </Button>
+          )}
+        </Flex>
       </VStack>
     </form>
   );

@@ -40,6 +40,8 @@ export interface PostDetailsPayload {
 
 export type PostType = 'Text' | 'Link' | 'Image';
 
+export type PostStatus = 'Draft' | 'Active' | 'Banned';
+
 export interface PostDetailsResponse {
   id: string;
   title: string | null;
@@ -51,4 +53,5 @@ export interface PostDetailsResponse {
   isNsfw: boolean;
   createdAt: Date;
   type: PostType;
+  status: PostStatus;
 }

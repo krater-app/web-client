@@ -7,7 +7,9 @@ import { PostType, SelectPostType } from './select-post-type/select-post-type';
 import { TextPostForm } from './text-post-form/text-post-form';
 
 interface Props {
-  onSubmitTextPost: (payload: FieldValues) => Promise<boolean>;
+  onSubmitTextPost: (
+    payload: FieldValues,
+  ) => Promise<{ status: boolean; id: string }>;
 }
 
 export const CreatePost = ({ onSubmitTextPost }: Props) => {

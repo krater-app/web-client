@@ -1,6 +1,9 @@
-import { Container, Heading, VStack } from '@chakra-ui/react';
+import { Container, Flex, Heading, Text, VStack } from '@chakra-ui/react';
 import { FieldValues } from 'react-hook-form';
-import { PostType } from '../../api/actions/news-feed/news-feed.types';
+import {
+  PostStatus,
+  PostType,
+} from '../../api/actions/news-feed/news-feed.types';
 import { TextPostForm } from '../create-post/text-post-form/text-post-form';
 
 interface Props {
@@ -9,7 +12,11 @@ interface Props {
   tags: string[];
   type: PostType;
   isNsfw: boolean;
-  onSubmitTextPost: (payload: FieldValues) => Promise<boolean>;
+  status: PostStatus;
+  onSubmitTextPost: (
+    payload: FieldValues,
+  ) => Promise<{ status: boolean; id: string }>;
+  onPublish: () => Promise<boolean>;
 }
 
 export const EditPost = ({
@@ -19,11 +26,24 @@ export const EditPost = ({
   title = '',
   content = '',
   onSubmitTextPost,
+  onPublish,
+  status,
 }: Props) => {
   return (
     <Container>
       <VStack spacing={5} align="stretch">
-        <Heading>Edit post ✨</Heading>
+        <Flex width="full" justifyContent="space-between" alignItems="center">
+          <Heading>Edit post ✨</Heading>
+          <Text fontWeight="semibold" fontSize="md">
+            Status:{' '}
+            <Text
+              display="inline-block"
+              color={status === 'Active' ? 'green.300' : 'orange.400'}
+            >
+              {status}
+            </Text>
+          </Text>
+        </Flex>
         {type === 'Text' && (
           <TextPostForm
             onSubmit={onSubmitTextPost}
@@ -32,6 +52,8 @@ export const EditPost = ({
             isNsfw={isNsfw}
             tags={tags}
             mode="update"
+            onPublish={onPublish}
+            status={status}
           />
         )}
       </VStack>

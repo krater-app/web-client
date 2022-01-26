@@ -18,3 +18,7 @@ export interface EditTextPostResponse {
   tags: string[];
   nsfw: boolean;
 }
+
+export interface PublishPostPayload {
+  postId: string;
+}

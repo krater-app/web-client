@@ -9,14 +9,20 @@ export const CreatePostContainer = () => {
   const { mutate } = useMutation(createTextPostAction);
 
   const onSubmitTextPost = useCallback(
-    async (body: FieldValues): Promise<boolean> => {
+    async (body: FieldValues): Promise<{ status: boolean; id: string }> => {
       const { payload, error } = await mutate(body);
 
       if (!error && payload) {
-        return true;
+        return {
+          status: true,
+          id: payload.id,
+        };
       }
 
-      return false;
+      return {
+        status: false,
+        id: '',
+      };
     },
     [mutate],
   );
