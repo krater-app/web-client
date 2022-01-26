@@ -1,4 +1,5 @@
 import { Container, Heading, VStack } from '@chakra-ui/react';
+import { FieldValues } from 'react-hook-form';
 import { PostType } from '../../api/actions/news-feed/news-feed.types';
 import { TextPostForm } from '../create-post/text-post-form/text-post-form';
 
@@ -8,6 +9,7 @@ interface Props {
   tags: string[];
   type: PostType;
   isNsfw: boolean;
+  onSubmitTextPost: (payload: FieldValues) => Promise<boolean>;
 }
 
 export const EditPost = ({
@@ -16,6 +18,7 @@ export const EditPost = ({
   isNsfw,
   title = '',
   content = '',
+  onSubmitTextPost,
 }: Props) => {
   return (
     <Container>
@@ -23,7 +26,7 @@ export const EditPost = ({
         <Heading>Edit post ✨</Heading>
         {type === 'Text' && (
           <TextPostForm
-            onSubmit={async () => true}
+            onSubmit={onSubmitTextPost}
             title={title}
             content={content}
             isNsfw={isNsfw}
