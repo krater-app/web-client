@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { CreatePostContainer } from '../app/create-post/create-post.container';
+import { EditPostContainer } from '../app/edit-post/edit-post.container';
 import { HomeContainer } from '../app/home/home.container';
 import { LoginContainer } from '../app/login/login.container';
 import { LogoutContainer } from '../app/logout/logout.container';
@@ -23,6 +24,14 @@ export const AppRoutes = () => (
       element={
         <RequireAuth>
           <CreatePostContainer />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path={`${AppRoute.EditPost}/:id`}
+      element={
+        <RequireAuth>
+          <EditPostContainer />
         </RequireAuth>
       }
     />

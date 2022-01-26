@@ -4,6 +4,8 @@ import {
   FetchNewsFeedResponse,
   FetchTagsPayload,
   FetchTagsResponse,
+  PostDetailsPayload,
+  PostDetailsResponse,
 } from './news-feed.types';
 
 export const fetchNewsFeed = ({
@@ -21,4 +23,14 @@ export const fetchTags = ({
 }: FetchTagsPayload): Action<FetchTagsResponse> => ({
   method: 'GET',
   endpoint: `/news-feed/tags?page=${page}&limit=${limit}&searchString=${searchString}`,
+});
+
+export const fetchPostDetails = ({
+  postId,
+}: PostDetailsPayload): Action<PostDetailsResponse> => ({
+  method: 'GET',
+  endpoint: `/news-feed/post-details/${postId}`,
+  config: {
+    skipAuthorization: false,
+  },
 });

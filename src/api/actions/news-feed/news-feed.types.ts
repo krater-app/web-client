@@ -33,3 +33,22 @@ export interface FetchTagsResponse {
   tags: string[];
   total: number;
 }
+
+export interface PostDetailsPayload {
+  postId?: string;
+}
+
+export type PostType = 'Text' | 'Link' | 'Image';
+
+export interface PostDetailsResponse {
+  id: string;
+  title: string | null;
+  content: string | null;
+  description: string | null;
+  imageUrl: string | null;
+  link: string | null;
+  tags: string[];
+  isNsfw: boolean;
+  createdAt: Date;
+  type: PostType;
+}

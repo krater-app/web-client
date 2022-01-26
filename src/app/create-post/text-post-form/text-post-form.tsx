@@ -20,17 +20,31 @@ interface TagValue {
 
 interface Props {
   onSubmit: (payload: FieldValues) => Promise<boolean>;
+  title?: string | null;
+  tags?: string[];
+  content?: string;
+  isNsfw?: boolean;
+  mode?: 'create' | 'update';
 }
 
-export const TextPostForm = ({ onSubmit }: Props) => {
-  const {
-    register,
-    handleSubmit,
-    formState,
-    setValue,
-    reset,
-    watch,
-  } = useForm();
+export const TextPostForm = ({
+  onSubmit,
+  title = '',
+  content = '',
+  tags: defaultTags = [],
+  isNsfw = false,
+  mode = 'create',
+}: Props) => {
+  const { register, handleSubmit, formState, setValue, reset, watch } = useForm(
+    {
+      defaultValues: {
+        title,
+        content,
+        isNsfw,
+        tags: defaultTags,
+      },
+    },
+  );
 
   const tagValues = watch('tags');
 
@@ -66,7 +80,7 @@ export const TextPostForm = ({ onSubmit }: Props) => {
   return (
     <form onSubmit={handleSubmit(handleSubmitCallback)}>
       <VStack spacing={5}>
-        <FormControl isInvalid={formState.errors.title}>
+        <FormControl isInvalid={Boolean(formState.errors.title)}>
           <FormLabel htmlFor="title">Title</FormLabel>
           <Input
             id="title"
@@ -78,7 +92,7 @@ export const TextPostForm = ({ onSubmit }: Props) => {
           />
           <FormHelperText>Title is not required for text post</FormHelperText>
         </FormControl>
-        <FormControl isInvalid={formState.errors.tags}>
+        <FormControl isInvalid={Boolean(formState.errors.tags)}>
           <FormLabel>Tags</FormLabel>
           <CreatableSelect
             {...register('tags', {
@@ -101,7 +115,7 @@ export const TextPostForm = ({ onSubmit }: Props) => {
           />
           <FormHelperText>Provide at least one tag</FormHelperText>
         </FormControl>
-        <FormControl isInvalid={formState.errors.content}>
+        <FormControl isInvalid={Boolean(formState.errors.content)}>
           <FormLabel htmlFor="content">Content</FormLabel>
           <Textarea
             id="content"
@@ -118,7 +132,7 @@ export const TextPostForm = ({ onSubmit }: Props) => {
           </Checkbox>
         </FormControl>
         <Button width="full" colorScheme="orange" type="submit">
-          Create
+          {mode === 'create' ? 'Create' : 'Update'}
         </Button>
       </VStack>
     </form>

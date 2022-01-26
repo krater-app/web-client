@@ -4,4 +4,5 @@ export enum AppRoute {
   Logout = '/logout',
   Register = '/register',
   CreatePost = '/create-post',
+  EditPost = '/edit-post',
 }

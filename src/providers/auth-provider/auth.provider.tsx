@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(authReducer, {
     ...initialAuthContext,
     accessToken: authStorage.getAccessToken(),
+    refreshToken: authStorage.getRefreshToken(),
     isAuthorized: authStorage.getAccessToken() !== null,
   });
 
