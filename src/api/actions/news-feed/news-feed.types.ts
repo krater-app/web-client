@@ -1,16 +1,16 @@
-export interface FetchNewsFeedItem {
+export interface NewsFeedPostItem {
+  id: string;
   comments: number;
-  content: string;
+  content: string | null;
   createdAt: string;
   createdBy: string;
   description: string | null;
-  id: string;
   imagePath: string | null;
   imageUrl: string | null;
   likes: number;
   tags: string[];
-  title: string;
-  type: string;
+  title: string | null;
+  type: PostType;
 }
 
 export interface FetchNewsFeedPayload {
@@ -19,7 +19,7 @@ export interface FetchNewsFeedPayload {
 }
 
 export interface FetchNewsFeedResponse {
-  items: FetchNewsFeedItem[];
+  items: NewsFeedPostItem[];
   total: number;
 }
 
