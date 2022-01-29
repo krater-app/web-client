@@ -5,4 +5,5 @@ export enum AppRoute {
   Register = '/register',
   CreatePost = '/create-post',
   EditPost = '/edit-post',
+  YourPosts = '/your-posts',
 }

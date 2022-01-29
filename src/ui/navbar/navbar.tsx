@@ -74,7 +74,7 @@ export const Navbar = () => {
             <LinkItem href={AppRoute.CreatePost}>Create new post</LinkItem>
           )}
           {isAuthorized && (
-            <LinkItem href={AppRoute.CreatePost}>Your posts</LinkItem>
+            <LinkItem href={AppRoute.YourPosts}>Your posts</LinkItem>
           )}
           {isAuthorized && <LinkItem href={AppRoute.Logout}>Logout</LinkItem>}
           <ThemeToggleButton />
@@ -125,7 +125,7 @@ export const Navbar = () => {
                 {isAuthorized && (
                   <MenuItem
                     as={Link}
-                    to={AppRoute.CreatePost}
+                    to={AppRoute.YourPosts}
                     icon={<BsFileEarmarkPost />}
                   >
                     Your posts
