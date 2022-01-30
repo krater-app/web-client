@@ -8,10 +8,17 @@ interface Props {
 
 export const NewsFeed = ({ items }: Props) => {
   return (
-    <Container width="full">
-      <List as="ul" spacing={10}>
+    <Container width="full" p={0} maxW="full">
+      <List
+        as="ul"
+        spacing={5}
+        px={{ md: 4 }}
+        paddingBottom={5}
+        width={{ md: 'container.lg' }}
+        mx={{ md: 'auto' }}
+      >
         {items.map((item) => (
-          <ListItem key={item.id} borderBottom="1px solid gray">
+          <ListItem key={item.id}>
             <TextPostItem {...item} />
           </ListItem>
         ))}

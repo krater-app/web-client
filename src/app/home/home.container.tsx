@@ -11,6 +11,7 @@ export const HomeContainer = () => {
     <NavbarLayout>
       <Container
         maxW="full"
+        w="full"
         px={{
           sm: 0,
         }}

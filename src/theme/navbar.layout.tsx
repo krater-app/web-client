@@ -16,7 +16,7 @@ export const NavbarLayout = ({ children }: Props) => (
     <VStack>
       <Navbar />
       <Box height="72px" />
-      <Container p={0} py={5}>
+      <Container p={0} w="full" maxW="full">
         {children}
       </Container>
     </VStack>

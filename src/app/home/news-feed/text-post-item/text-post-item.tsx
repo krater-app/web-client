@@ -29,17 +29,23 @@ export const TextPostItem = ({
   title,
 }: Props) => {
   return (
-    <Container width="full" px={0} pb={10}>
+    <Container
+      width="full"
+      maxW="container.lg"
+      p={5}
+      bg="gray.900"
+      borderRadius="md"
+    >
       <VStack spacing={5} align="stretch">
+        <Flex width="full" alignItems="center" justifyContent="space-between">
+          <Text>By {createdBy}</Text>
+          <Text>{DateTime.fromISO(createdAt).toRelative()}</Text>
+        </Flex>
         {title && (
           <Heading fontSize="lg" fontWeight="semibold">
             {title}
           </Heading>
         )}
-        <Flex width="full" alignItems="center" justifyContent="space-between">
-          <Text>By {createdBy}</Text>
-          <Text>{DateTime.fromISO(createdAt).toRelative()}</Text>
-        </Flex>
         <Text>{content}</Text>
         <Flex w="full" justifyContent="space-between" alignItems="center">
           <Button>
