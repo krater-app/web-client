@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Text,
+  useColorModeValue,
   VStack,
 } from '@chakra-ui/react';
 import { DateTime } from 'luxon';
@@ -33,7 +34,8 @@ export const TextPostItem = ({
       width="full"
       maxW="container.lg"
       p={5}
-      bg="gray.900"
+      bg={useColorModeValue('whiteAlpha.900', 'gray.900')}
+      shadow="sm"
       borderRadius="md"
     >
       <VStack spacing={5} align="stretch">
