@@ -1,0 +1,9 @@
+import { NavbarLayout } from '../../theme/navbar.layout';
+
+export const ProfileContainer = () => {
+  return (
+    <NavbarLayout>
+      <h1>Profile</h1>
+    </NavbarLayout>
+  );
+};

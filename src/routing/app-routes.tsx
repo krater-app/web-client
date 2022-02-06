@@ -4,6 +4,7 @@ import { EditPostContainer } from '../app/edit-post/edit-post.container';
 import { HomeContainer } from '../app/home/home.container';
 import { LoginContainer } from '../app/login/login.container';
 import { LogoutContainer } from '../app/logout/logout.container';
+import { ProfileContainer } from '../app/profile/profile.container';
 import { RegisterContainer } from '../app/register/register.container';
 import { YourPostsContainer } from '../app/your-posts/your-posts.container';
 import { AppRoute } from './app-route.enum';
@@ -41,6 +42,14 @@ export const AppRoutes = () => (
       element={
         <RequireAuth>
           <YourPostsContainer />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path={AppRoute.Profile}
+      element={
+        <RequireAuth>
+          <ProfileContainer />
         </RequireAuth>
       }
     />

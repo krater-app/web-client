@@ -2,6 +2,7 @@ import {
   AddIcon,
   ArrowForwardIcon,
   HamburgerIcon,
+  SettingsIcon,
   UnlockIcon,
 } from '@chakra-ui/icons';
 import {
@@ -76,6 +77,9 @@ export const Navbar = () => {
           {isAuthorized && (
             <LinkItem href={AppRoute.YourPosts}>Your posts</LinkItem>
           )}
+          {isAuthorized && (
+            <LinkItem href={AppRoute.Profile}>Your Profile</LinkItem>
+          )}
           {isAuthorized && <LinkItem href={AppRoute.Logout}>Logout</LinkItem>}
           <ThemeToggleButton />
         </Stack>
@@ -129,6 +133,15 @@ export const Navbar = () => {
                     icon={<BsFileEarmarkPost />}
                   >
                     Your posts
+                  </MenuItem>
+                )}
+                {isAuthorized && (
+                  <MenuItem
+                    as={Link}
+                    to={AppRoute.Profile}
+                    icon={<SettingsIcon />}
+                  >
+                    Your profile
                   </MenuItem>
                 )}
                 {isAuthorized && (
