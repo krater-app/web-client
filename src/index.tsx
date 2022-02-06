@@ -15,16 +15,16 @@ window.Buffer = window.Buffer || Buffer;
 
 ReactDOM.render(
   <React.StrictMode>
-    <ChakraProvider theme={theme}>
-      <ColorModeScript initialColorMode="system" />
-      <AuthProvider>
-        <ApiClientContext>
+    <AuthProvider>
+      <ApiClientContext>
+        <ChakraProvider theme={theme}>
+          <ColorModeScript initialColorMode="system" />
           <BrowserRouter>
             <AppRoutes />
           </BrowserRouter>
-        </ApiClientContext>
-      </AuthProvider>
-    </ChakraProvider>
+        </ChakraProvider>
+      </ApiClientContext>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

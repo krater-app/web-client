@@ -22,6 +22,7 @@ export const LoginContainer = () => {
       dispatch({
         type: START_AUTHORIZING,
       });
+
       const { payload, error: submitError } = await mutate(body);
 
       if (!submitError && payload) {

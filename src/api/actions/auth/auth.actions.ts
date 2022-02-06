@@ -12,6 +12,9 @@ export const loginAction = (payload: LoginPayload): Action<LoginResponse> => ({
   method: 'POST',
   endpoint: '/account/login',
   body: payload,
+  config: {
+    skipAuthorization: true,
+  },
 });
 
 export const registerAction = (
@@ -20,6 +23,9 @@ export const registerAction = (
   method: 'POST',
   endpoint: '/account-registration',
   body: payload,
+  config: {
+    skipAuthorization: true,
+  },
 });
 
 export const refreshTokenAction = (

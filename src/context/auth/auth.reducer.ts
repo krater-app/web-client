@@ -43,6 +43,7 @@ export const authReducer = (
         ...state,
         accessToken: action.accessToken ?? null,
         refreshToken: action.refreshToken ?? null,
+        isAuthorizing: false,
       };
 
     case LOGOUT: {
