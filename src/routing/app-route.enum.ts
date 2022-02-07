@@ -7,4 +7,5 @@ export enum AppRoute {
   EditPost = '/edit-post',
   YourPosts = '/your-posts',
   Profile = '/profile',
+  VerificationCode = '/verification-code',
 }

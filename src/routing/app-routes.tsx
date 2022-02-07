@@ -6,6 +6,7 @@ import { LoginContainer } from '../app/login/login.container';
 import { LogoutContainer } from '../app/logout/logout.container';
 import { ProfileContainer } from '../app/profile/profile.container';
 import { RegisterContainer } from '../app/register/register.container';
+import { VerificationCode } from '../app/verification-code/verification-code.container';
 import { YourPostsContainer } from '../app/your-posts/your-posts.container';
 import { AppRoute } from './app-route.enum';
 import { GuestOnly } from './guest-only';
@@ -50,6 +51,14 @@ export const AppRoutes = () => (
       element={
         <RequireAuth>
           <ProfileContainer />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path={AppRoute.VerificationCode}
+      element={
+        <RequireAuth>
+          <VerificationCode />
         </RequireAuth>
       }
     />
