@@ -100,6 +100,7 @@ export const Register = ({ onSubmit, errorMessage }: Props) => {
                   },
                   minLength: 3,
                 })}
+                variant={formState.errors.email ? 'error' : 'outline'}
               />
               {formState.errors.email ? (
                 <FormErrorMessage>Invalid email address.</FormErrorMessage>
