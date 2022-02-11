@@ -75,7 +75,6 @@ export const Login = ({ onSubmit }: LoginProps) => {
               <FormLabel htmlFor="nickname">Nickname</FormLabel>
               <Input
                 id="nickname"
-                variant="error"
                 placeholder="Provide your nickname"
                 {...register('nickname', {
                   required: true,
@@ -99,7 +98,6 @@ export const Login = ({ onSubmit }: LoginProps) => {
               type="submit"
               isLoading={isAuthorizing}
               loadingText="Logging in..."
-              disabled
             >
               Sign In
             </Button>
