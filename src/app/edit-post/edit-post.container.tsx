@@ -12,7 +12,7 @@ import {
   PostStatus,
   PostType,
 } from '../../api/actions/news-feed/news-feed.types';
-import { NavbarLayout } from '../../theme/navbar.layout';
+import { NavbarLayout } from '../../theme/layouts/navbar.layout';
 import { EditPost } from './edit-post';
 
 export const EditPostContainer = () => {

@@ -1,6 +1,6 @@
 import { Box, Container, useColorModeValue, VStack } from '@chakra-ui/react';
 import { ReactNode } from 'react';
-import { Navbar } from '../ui/navbar/navbar';
+import { Navbar } from '../../ui/navbar/navbar';
 
 interface Props {
   children: ReactNode;

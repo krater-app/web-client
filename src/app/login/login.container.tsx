@@ -9,7 +9,7 @@ import {
   START_AUTHORIZING,
 } from '../../context/auth/auth.reducer';
 import { useAuthState } from '../../hooks/use-auth-state/use-auth-state.hook';
-import { NavbarLayout } from '../../theme/navbar.layout';
+import { HeroImgLayout } from '../../theme/layouts/hero-img.layout';
 import { Login } from './login';
 
 export const LoginContainer = () => {
@@ -51,8 +51,8 @@ export const LoginContainer = () => {
   );
 
   return (
-    <NavbarLayout>
+    <HeroImgLayout>
       <Login onSubmit={onSubmit} />
-    </NavbarLayout>
+    </HeroImgLayout>
   );
 };

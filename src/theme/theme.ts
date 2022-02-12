@@ -5,7 +5,7 @@ import { Input } from './input.styles';
 
 export const theme = extendTheme({
   fonts: {
-    heading: 'Open Sans',
+    heading: 'Montserrat',
     body: 'Raleway',
   },
   colors: {
@@ -20,7 +20,7 @@ export const theme = extendTheme({
     },
     font: {
       black: '#000000',
-      gray: '#C6C6C6',
+      gray: '#717171',
       primary: '#30417A',
     },
   },
@@ -28,5 +28,12 @@ export const theme = extendTheme({
     Button,
     Input,
     FormLabel,
+    Link: {
+      baseStyle: {
+        color: 'primary',
+        fontWeight: 'semibold',
+        fontSize: '16px',
+      },
+    },
   },
 });

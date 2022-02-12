@@ -7,6 +7,7 @@ export const FormLabel: ComponentStyleConfig = {
     },
   },
   baseStyle: {
+    fontSize: '18px',
     fontWeight: 'semibold',
     _invalid: {
       color: 'red',

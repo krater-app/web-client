@@ -1,14 +1,13 @@
 import {
   Box,
   Button,
-  Flex,
+  Checkbox,
   FormControl,
   FormLabel,
   Heading,
   Input,
   Link,
   Text,
-  VStack,
 } from '@chakra-ui/react';
 import { useCallback, useState } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
@@ -40,76 +39,75 @@ export const Login = ({ onSubmit }: LoginProps) => {
   );
 
   return (
-    <Box width="full">
-      <Flex
-        justify="center"
-        align={{
-          md: 'center',
-          sm: 'flex-start',
-        }}
-      >
-        <Box
-          borderWidth={1}
-          borderRadius={8}
-          boxShadow="lg"
-          p={10}
-          w={{
-            md: 'container.md',
-            sm: 'container.sm',
-          }}
-        >
-          <VStack>
-            <Heading as="h2" size="lg" mb={4}>
-              Login
-            </Heading>
-          </VStack>
+    <Box
+      width={{
+        base: 'container.sm',
+      }}
+    >
+      <Heading as="h2" fontSize="37px" fontWeight="semibold" mb={1}>
+        Login
+      </Heading>
+      <Text fontWeight="medium" color="font.black" fontSize="19px" maxW="70%">
+        An efficient way to be up to date with news from world of your interest.
+      </Text>
 
-          <form onSubmit={handleSubmit(handleSubmitCallback)}>
-            {isError && (
-              <FormError
-                title="Unauthorized!"
-                description="Provided nickname or password is invalid."
-              />
-            )}
-            <FormControl mt={6}>
-              <FormLabel htmlFor="nickname">Nickname</FormLabel>
-              <Input
-                id="nickname"
-                placeholder="Provide your nickname"
-                {...register('nickname', {
-                  required: true,
-                })}
-              />
-            </FormControl>
-            <FormControl mt={6}>
-              <FormLabel htmlFor="password">Password</FormLabel>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Provide your password"
-                {...register('password', {
-                  required: true,
-                })}
-              />
-            </FormControl>
-            <Button
-              width="full"
-              mt={6}
-              type="submit"
-              isLoading={isAuthorizing}
-              loadingText="Logging in..."
-            >
-              Sign In
-            </Button>
-          </form>
-          <Text mt={4}>
-            Don't have an account?{' '}
-            <Link ml={2} as={RouteLink} to={AppRoute.Register}>
-              Register Here
-            </Link>
+      <form onSubmit={handleSubmit(handleSubmitCallback)}>
+        {isError && (
+          <FormError
+            title="Unauthorized!"
+            description="Provided nickname or password is invalid."
+          />
+        )}
+        <FormControl mt={6}>
+          <FormLabel htmlFor="nickname">Nickname</FormLabel>
+          <Input
+            id="nickname"
+            placeholder="Provide your nickname"
+            {...register('nickname', {
+              required: true,
+            })}
+          />
+        </FormControl>
+        <FormControl mt={6}>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Text fontSize="14px" color="font.gray" mb={4}>
+            Your password should contain two uppercase letters and one special
+            character.
           </Text>
-        </Box>
-      </Flex>
+          <Input
+            id="password"
+            type="password"
+            placeholder="Provide your password"
+            {...register('password', {
+              required: true,
+            })}
+          />
+        </FormControl>
+        <FormControl
+          mt={6}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Checkbox size="lg">Remember me</Checkbox>
+          <Link>Forgot password?</Link>
+        </FormControl>
+        <Button
+          width="full"
+          mt={6}
+          type="submit"
+          isLoading={isAuthorizing}
+          loadingText="Logging in..."
+        >
+          Sign In
+        </Button>
+      </form>
+      <Text mt={4}>
+        Don't have an account?{' '}
+        <Link ml={2} as={RouteLink} to={AppRoute.Register}>
+          Register Here
+        </Link>
+      </Text>
     </Box>
   );
 };

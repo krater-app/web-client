@@ -1,6 +1,17 @@
 import { ComponentStyleConfig } from '@chakra-ui/react';
 
 export const Button: ComponentStyleConfig = {
+  sizes: {
+    sm: {
+      height: '40px',
+    },
+    md: {
+      height: '52px',
+    },
+    lg: {
+      height: '62px',
+    },
+  },
   baseStyle: {
     color: 'white',
     backgroundColor: 'primary',

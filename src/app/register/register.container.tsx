@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useMutation } from 'react-fetching-library';
 import { FieldValues } from 'react-hook-form';
 import { registerAction } from '../../api/actions/auth/auth.actions';
-import { NavbarLayout } from '../../theme/navbar.layout';
+import { NavbarLayout } from '../../theme/layouts/navbar.layout';
 import { Register } from './register';
 
 export const RegisterContainer = () => {
