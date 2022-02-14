@@ -18,22 +18,18 @@ export const Input: ComponentStyleConfig = {
       },
     },
   },
-  variants: {
-    outline: (props) => ({
-      field: {
-        bg: props.colorMode === 'light' ? 'white' : 'gray',
+  baseStyle: (props) => ({
+    field: {
+      bg: props.colorMode === 'light' ? 'white' : 'gray',
+      color: '#717171',
+      borderStyle: 'solid',
+      borderWidth: '1px',
+      borderColor: 'font.primary',
+      borderRadius: '5px',
+      _placeholder: {
         color: '#717171',
-        borderStyle: 'solid',
-        borderWidth: '1px',
-        borderColor: 'font.primary',
-        borderRadius: '5px',
-        _placeholder: {
-          color: '#717171',
-        },
       },
-    }),
-    error: {
-      field: {
+      _invalid: {
         bg: 'rgba(220, 86, 107, 0.05)',
         borderStyle: 'solid',
         borderWidth: '1px',
@@ -44,5 +40,5 @@ export const Input: ComponentStyleConfig = {
         },
       },
     },
-  },
+  }),
 };

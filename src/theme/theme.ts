@@ -35,5 +35,12 @@ export const theme = extendTheme({
         fontSize: '16px',
       },
     },
+    FormError: {
+      baseStyle: {
+        text: {
+          color: 'red',
+        },
+      },
+    },
   },
 });
